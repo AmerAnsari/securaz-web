@@ -1,0 +1,42 @@
+{
+  "name": "securaz",
+  "description": "Store your credentials in the only, safe and one place. the Securaz.",
+  "version": "0.1.0",
+  "scripts": {
+    "ng": "ng",
+    "serve": "ng serve",
+    "serve-production": "ng serve -c production",
+    "serve-local": "ng serve -c local",
+    "build": "ng build",
+    "build-production": "ng build -c production",
+    "build-local": "ng build -c local",
+    "watch": "ng build --watch --configuration development",
+    "lint": "ng lint"
+  },
+  "dependencies": {
+    "@amirsavand/ngx-common": "^3.2.0",
+    "@angular/animations": "^18.1.0",
+    "@angular/cdk": "^18.1.4",
+    "@angular/common": "^18.1.0",
+    "@angular/compiler": "^18.1.0",
+    "@angular/core": "^18.1.0",
+    "@angular/forms": "^18.1.0",
+    "@angular/material": "^18.1.4",
+    "@angular/platform-browser": "^18.1.0",
+    "@angular/platform-browser-dynamic": "^18.1.0",
+    "@angular/router": "^18.1.0",
+    "bootstrap": "^5.3.3",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.1.3",
+    "@angular/cli": "^18.1.3",
+    "@angular/compiler-cli": "^18.1.0",
+    "angular-eslint": "18.2.0",
+    "eslint": "^9.8.0",
+    "typescript": "~5.5.2",
+    "typescript-eslint": "8.0.0"
+  }
+}

@@ -1,0 +1,60 @@
+<div class="row justify-content-center py-5">
+  <div class="col-md-6 col-lg-4 col-sm-12">
+    <mat-card [formGroup]="form.form">
+
+      <!-- Header -->
+      <mat-card-header>
+        <mat-card-title>Sign Up</mat-card-title>
+      </mat-card-header>
+
+      <!-- Content -->
+      <mat-card-content class="mt-3">
+
+        <!-- Email -->
+        <div>
+          <mat-form-field class="d-block">
+            <mat-label>Email</mat-label>
+            <input formControlName="email"
+                   matInput
+                   required
+                   placeholder="jooni@domain.com"/>
+          </mat-form-field>
+
+          <!-- Error -->
+          @if (form.error['email']) {
+            <small class="text-danger">{{ form.error['email'][0] }}</small>
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="mt-3">
+          <mat-form-field class="d-block">
+            <mat-label>Password</mat-label>
+            <input formControlName="password"
+                   required
+                   matInput/>
+          </mat-form-field>
+        </div>
+
+        <!-- Actions -->
+        <div class="d-flex align-items-center mt-3">
+
+          <!-- Sign in -->
+          <a mat-button
+             routerLink="../sign-in">
+            Already have an account?
+          </a>
+
+          <!-- Submit -->
+          <button (click)="submit()"
+                  [disabled]="form.form.invalid || form.loading || form.form.disabled"
+                  class="ms-auto"
+                  mat-flat-button>
+            Go
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

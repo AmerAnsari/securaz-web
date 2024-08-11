@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+@import "variables";
+
+/** Fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+/** Bootstrap */
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/utilities/api";
+
+/** Material */
+
+@include mat.core();
+
+
+:root {
+  @include mat.all-component-themes($theme);
+}
+
+@include mat.typography-hierarchy($theme);
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-toolbar.primary {
+  background: mat.get-theme-color($theme, primary-container);
+}
+
+.mat-hint {
+  color: var(--mdc-list-list-item-supporting-text-color)
+}
