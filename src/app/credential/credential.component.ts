@@ -101,6 +101,14 @@ export class CredentialComponent implements OnInit, OnDestroy {
               private readonly router: Router) {
   }
 
+  private siteIcon(site: string): string {
+    const client: string = 'PASSWORD_MANAGER';
+    const type: string = 'FAVICON';
+    const fallback: string = 'TYPE,SIZE,URL,TOP_DOMAIN';
+    const size: number = 64;
+    return `https://t1.gstatic.com/faviconV2?client=${client}&type=${type}&fallback_opts=${fallback}&size=${size}&url=${site}`;
+  }
+
   protected copiedToClipboard(): void {
     this.matSnackBar.open('Password copied to clipboard', '', {
       duration: 3000,
@@ -189,6 +197,9 @@ export class CredentialComponent implements OnInit, OnDestroy {
     this.form.submit().subscribe({
       next: (data: Credential): void => {
 
+        /** Add the site icon. */
+        data.site_icon = this.siteIcon(data.site);
+
         /** Push to the items. */
         if (isCreate) {
           this.items.unshift(data);
@@ -243,11 +254,7 @@ export class CredentialComponent implements OnInit, OnDestroy {
           next: (data: ApiResponse<Credential>): void => {
             this.items = data.results;
             for (let item of this.items) {
-              const client: string = 'PASSWORD_MANAGER';
-              const type: string = 'FAVICON';
-              const fallback: string = 'TYPE,SIZE,URL,TOP_DOMAIN';
-              const size: number = 64;
-              item.site_icon = `https://t1.gstatic.com/faviconV2?client=${client}&type=${type}&fallback_opts=${fallback}&size=${size}&url=${item.site}`;
+              item.site_icon = this.siteIcon(item.site);
             }
             this.loading = false;
           },
