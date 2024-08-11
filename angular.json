@@ -48,7 +48,8 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/public"
+              "src/public",
+              "src/_redirects"
             ],
             "styles": [
               "src/styles.scss"
