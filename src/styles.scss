@@ -24,12 +24,32 @@
 
 @include mat.core();
 
+@mixin mdc-surface-colors($theme) {
+  $colors: (
+    'surface',
+    'surface-container-lowest',
+    'surface-container-low',
+    'surface-container',
+    'surface-container-high',
+    'surface-container-highest'
+  );
 
-:root {
-  @include mat.all-component-themes($theme);
+  @each $color in $colors {
+    --mdc-#{$color}: #{mat.get-theme-color($theme, $color)};
+  }
 }
 
-@include mat.typography-hierarchy($theme);
+html {
+  @include mat.all-component-themes($light-theme);
+  @include mat.system-level-colors($light-theme);
+  @include mat.system-level-typography($light-theme);
+  @include mdc-surface-colors($light-theme);
+
+  @media (prefers-color-scheme: dark) {
+    @include mat.system-level-colors($dark-theme);
+    @include mdc-surface-colors($dark-theme);
+  }
+}
 
 html, body {
   height: 100%;
@@ -40,10 +60,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mat-toolbar.primary {
-  background: mat.get-theme-color($theme, primary-container);
+/** Custom */
+
+.mat-mdc-card {
+  background-color: var(--mdc-surface-container) !important;
+  box-shadow: none !important;
 }
 
 .mat-hint {
-  color: var(--mdc-list-list-item-supporting-text-color)
+  color: var(--mdc-list-list-item-supporting-text-color);
 }
